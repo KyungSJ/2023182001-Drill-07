@@ -29,7 +29,11 @@ class Ball:
     def __init__(self):
         self.x, self.y = random.randint(0, 800), 599
         self.frame = random.randint(1, 10)
-        self.image = load_image('ball21x21.png')
+        self.big_small = random.randint(0, 1)
+        if self.big_small == 0:
+            self.image = load_image('ball21x21.png')
+        elif self.big_small == 1:
+            self.image = load_image('ball41x41.png')
     def update(self):
         if self.y < 60:
             pass
