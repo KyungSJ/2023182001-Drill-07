@@ -25,6 +25,17 @@ class Boy:
 
     def draw(self):
         self.image.clip_draw(self.frame*100, 0, 100, 100, self.x, self.y)
+class Ball:
+    def __init__(self):
+        self.x, self.y = random.randint(0, 800), 599
+        self.image = load_image('ball21x21.png')
+    def update(self):
+        if self.y < 60:
+            pass
+        else:
+            self.y -= random.randint(1, 10)
+    def draw(self):
+        self.image.draw(self.x, self.y)
 
 
 
@@ -38,26 +49,30 @@ def handle_events():
             running = False
 
 def update_world():
-    grass.update()
-    for boy in team:
-        boy.update()
+    for o in world:
+        o.update()
     pass
 
 def render_world():
     clear_canvas()
-    grass.draw()
-    for boy in team:
-        boy.draw()
+    for o in world:
+        o.draw()
     update_canvas()
 
 def reset_world(): # 초기화하는 함수
     global running
     global grass
     global team
+    global world
 
     running = True
+    world = []
     grass = Grass() # Grass 클래스를 이용해서 grass 객체를 생성
+    world.append(grass)
     team = [Boy() for i in range(11)] # 11 명 소년 팀이 생성
+    balls = [Ball() for i in range(20)]
+    world += team
+    world += balls
 
 
 open_canvas()
