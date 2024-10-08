@@ -28,12 +28,13 @@ class Boy:
 class Ball:
     def __init__(self):
         self.x, self.y = random.randint(0, 800), 599
+        self.frame = random.randint(1, 10)
         self.image = load_image('ball21x21.png')
     def update(self):
         if self.y < 60:
             pass
         else:
-            self.y -= random.randint(1, 10)
+            self.y -= self.frame
     def draw(self):
         self.image.draw(self.x, self.y)
 
