@@ -16,7 +16,6 @@ class Boy:
         self.x, self.y = random.randint(0, 200), 90
         self.frame = random.randint(0, 7)
         self.image = load_image('run_animation.png')
-
     def update(self):
         self.frame = (self.frame + 1) % 8
         self.x += 5
@@ -28,7 +27,7 @@ class Boy:
 class Ball:
     def __init__(self):
         self.x, self.y = random.randint(0, 800), 599
-        self.frame = random.randint(1, 10)
+        self.frame = random.randint(5, 15)
         self.big_small = random.randint(0, 1)
         if self.big_small == 0:
             self.image = load_image('ball21x21.png')
